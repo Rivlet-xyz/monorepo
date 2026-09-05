@@ -1,0 +1,19 @@
+{
+  "name": "rivlet",
+  "private": true,
+  "packageManager": "bun@1.4.0",
+  "workspaces": ["web/app"],
+  "scripts": {
+    "dev": "bun run --cwd web/app dev",
+    "build": "bun run --cwd web/app build",
+    "lint": "bun run --cwd web/app lint",
+    "typecheck": "bun run --cwd web/app typecheck",
+    "contracts:build": "forge build --root contracts",
+    "contracts:test": "forge test --root contracts",
+    "contracts:fmt": "forge fmt --root contracts",
+    "test:e2e": "bun test ./tests"
+  },
+  "devDependencies": {
+    "@foundry-rs/forge": "^1.7.1"
+  }
+}
