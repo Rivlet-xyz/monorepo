@@ -1,5 +1,7 @@
 # Rivlet
 
+<img src="web/landing/public/rivlet-logo.png" alt="Rivlet logo" width="128" height="128" />
+
 Monorepo for the operator and backer app, x402 payment services, and smart contracts.
 
 ```text
