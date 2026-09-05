@@ -5,7 +5,7 @@ Monorepo for the operator and backer app, x402 payment services, and smart contr
 ```text
 rivlet/
 ├── web/
-│   ├── landing/  # Landing page placeholder
+│   ├── landing/  # Landing frontend (Next.js + coss ui)
 │   └── app/      # Operator and backer frontend (Next.js + coss ui)
 ├── server/       # x402 gateway, funding, verification, payout jobs
 ├── contracts/    # Foundry source, tests, deployment scripts
@@ -27,16 +27,19 @@ bun install
 bun dev
 ```
 
-The frontend in `web/app/` was initialized with `bunx --bun shadcn@latest init @coss/style`.
+Both frontends were initialized with `bunx --bun shadcn@latest init @coss/style`.
 Use Bun and the coss style for frontend work.
-`web/landing/` contains a `.gitkeep` placeholder for now.
+Each frontend includes only the coss button and its required loading spinner.
+Add further components individually as needed.
 
 ## Commands
 
 ```sh
-bun run build         # Build the web app
-bun lint              # Lint the web app
-bun typecheck         # Check frontend types
+bun dev               # Run the operator/backer app on port 3000
+bun dev:landing       # Run the landing frontend on port 3001
+bun run build         # Build both frontends
+bun lint              # Lint both frontends
+bun typecheck         # Check both frontends' types
 bun contracts:build   # Compile Solidity
 bun contracts:test    # Run Foundry tests
 bun contracts:fmt     # Format Solidity
