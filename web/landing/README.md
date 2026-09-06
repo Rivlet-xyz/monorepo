@@ -1,15 +1,18 @@
 # Rivlet landing
 
-Landing frontend using Next.js and coss ui, initialized with
-`bunx --bun shadcn@latest init @coss/style`.
-Run `bun dev:landing` from the repository root to serve it on port 3001.
+Landing frontend for Rivlet, built with Next.js, Tailwind and the coss/shadcn
+theme tokens. Run `bun dev:landing` from the repository root to serve it on
+port 3001.
 
 ## Structure
 
 - `app/page.tsx` assembles the sections in the order of `LANDING.md`.
 - `components/landing/*` holds one file per section. `ui.tsx` has the shared
   primitives (bands, headline, kicker, button, placeholder).
-- `lib/site.ts` holds links; `lib/assets.ts` resolves the video and diagram files at build time.
+- `lib/site.ts` holds links; `lib/assets.ts` resolves the video, diagram and
+  illustration files at build time.
+- `public/` holds the mark, partner logos, illustrations and the diagram. Drop
+  `public/videos/demo.mp4` in to replace the demo placeholder.
 
 ## Environment
 
