@@ -51,7 +51,7 @@ export function Integration({ diagram }: { diagram?: string }) {
       <div className="flex flex-col">
         {diagram ? (
           <div className="relative aspect-[3/2] lg:aspect-auto lg:min-h-[320px] lg:flex-1">
-            <Image
+            <Image draggable={false}
               src={diagram}
               alt="How a payment flows from your API through the agreement to the builder and backers"
               fill

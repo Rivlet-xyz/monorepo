@@ -7,7 +7,7 @@ export function Footer() {
     <footer>
       <div className="container-x flex flex-col gap-6 border-x border-border px-4 py-8 text-sm md:flex-row md:items-center md:justify-between md:px-10">
         <div className="flex items-center gap-2">
-          <Image src="/rivlet-mark.png" alt="" width={20} height={20} className="invert" />
+          <Image draggable={false} src="/rivlet-mark.png" alt="" width={20} height={20} className="invert" />
           <span className="font-medium">Rivlet</span>
           <span className="text-muted-foreground">Back a bot. Share its earnings.</span>
         </div>

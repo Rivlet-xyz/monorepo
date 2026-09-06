@@ -240,3 +240,10 @@
     @apply font-sans font-mono;
     }
 }
+@layer base {
+  img,
+  svg {
+    -webkit-user-drag: none;
+    user-select: none;
+  }
+}

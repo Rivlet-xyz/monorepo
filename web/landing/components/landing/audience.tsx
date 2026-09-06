@@ -25,7 +25,7 @@ export function Audience({ images }: { images: { builders?: string; backers?: st
             <div key={side.key} className="border-b border-border last:border-b-0 md:border-b-0 md:first:border-r">
               <div className="relative aspect-[16/10] border-b border-border">
                 {image ? (
-                  <Image src={image} alt="" fill sizes="(min-width: 768px) 640px, 100vw" className="object-cover mix-blend-lighten" />
+                  <Image draggable={false} src={image} alt="" fill sizes="(min-width: 768px) 640px, 100vw" className="object-cover mix-blend-lighten" />
                 ) : (
                   <Placeholder file={`public/illustrations/${side.key}.svg`} note={side.kicker} className="h-full" />
                 )}

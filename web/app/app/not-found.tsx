@@ -9,7 +9,7 @@ export default function NotFound() {
   return (
     <main className="flex min-h-svh items-center justify-center p-6">
       <div className="flex w-full max-w-md flex-col items-start gap-6">
-        <Image src="/rivlet-logo.png" alt="Rivlet" width={40} height={40} className="rounded-lg" />
+        <Image draggable={false} src="/rivlet-logo.png" alt="Rivlet" width={40} height={40} className="rounded-lg" />
         <div className="space-y-2">
           <p className="font-mono text-xs text-muted-foreground">404</p>
           <h1 className="text-2xl font-semibold tracking-tight">Page not found</h1>

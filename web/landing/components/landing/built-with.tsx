@@ -27,7 +27,7 @@ export function BuiltWith() {
             (index < 2 ? "" : " border-b-0")
           }
         >
-          <Image
+          <Image draggable={false}
             src={partner.logo}
             alt={partner.wordmark ? partner.name : ""}
             width={partner.wordmark ? 72 : 22}
