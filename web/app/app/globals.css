@@ -247,3 +247,9 @@
     user-select: none;
   }
 }
+
+@layer base {
+  html {
+    color-scheme: dark;
+  }
+}
