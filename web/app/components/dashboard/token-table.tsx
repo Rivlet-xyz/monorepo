@@ -177,7 +177,8 @@ export function TokenTable({
                     scope="col"
                     aria-sort={active ? (sortDir === "asc" ? "ascending" : "descending") : "none"}
                     className={cn(
-                      "px-4 py-3 font-mono text-xs font-normal tracking-[0.06em] text-muted-foreground uppercase",
+                      "px-4 py-3 font-mono font-normal tracking-[0.06em] text-muted-foreground uppercase",
+                      big ? "text-sm" : "text-xs",
                       column.numeric && "text-right",
                     )}
                   >

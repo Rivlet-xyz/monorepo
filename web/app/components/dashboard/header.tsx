@@ -2,12 +2,12 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { useEffect, useState } from "react"
 
 import { FixturePill } from "@/components/dashboard/pills"
-import { explorerBlockUrl, getMeta, usingFixtures } from "@/lib/api"
-import { blockNumber, prettySource, utcTime } from "@/lib/format"
+import { explorerBlockUrl, usingFixtures } from "@/lib/api"
+import { blockNumber, utcTime } from "@/lib/format"
 import type { Meta } from "@/lib/types"
+import { useMeta } from "@/lib/use-meta"
 
 function MetaPill({ meta, failed }: { meta: Meta | null; failed: boolean }) {
   // A failed /meta is never hidden: a stale block number on camera is worse
@@ -40,34 +40,17 @@ function MetaPill({ meta, failed }: { meta: Meta | null; failed: boolean }) {
       >
         {blockNumber(meta.block)}
       </a>{" "}
-      · refreshed {utcTime(meta.refreshedAt)}
+      · {utcTime(meta.refreshedAt)}
     </span>
   )
 }
 
 export function Header() {
-  const [meta, setMeta] = useState<Meta | null>(null)
-  const [failed, setFailed] = useState(false)
-
-  useEffect(() => {
-    const controller = new AbortController()
-    getMeta(controller.signal)
-      .then(setMeta)
-      .catch(() => {
-        if (!controller.signal.aborted) setFailed(true)
-      })
-    return () => controller.abort()
-  }, [])
-
-  const sources = meta
-    ? `sources: ${meta.sources.lending.map(prettySource).join(", ")} · ${meta.sources.dex
-        .map(prettySource)
-        .join(", ")} depth`
-    : null
+  const { meta, failed } = useMeta()
 
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur-sm">
-      <div className="container-x flex flex-col gap-3 border-x border-border px-4 py-3 lg:flex-row lg:items-center lg:justify-between">
+      <div className="container-x flex h-14 items-center justify-between gap-4 border-x border-border px-4">
         <div className="flex items-center gap-3">
           <Link href="/" className="flex items-center gap-2" aria-label="shoalfi home">
             <Image draggable={false} src="/logo.png" alt="" width={22} height={22} priority />
@@ -76,18 +59,13 @@ export function Header() {
           {usingFixtures ? <FixturePill /> : null}
         </div>
 
-        <MetaPill meta={meta} failed={failed} />
-
-        <div className="flex flex-wrap items-center gap-x-4 gap-y-1 font-mono text-xs text-muted-foreground">
-          {sources ? <span>{sources}</span> : null}
-          <Link href="/incident" className="hover:text-foreground">
-            aug 2026 incidents
-          </Link>
+        <div className="flex items-center gap-4">
+          <MetaPill meta={meta} failed={failed} />
           <Link
-            href="/#how-this-works"
-            className="underline decoration-dotted underline-offset-4 hover:text-foreground"
+            href="/incident"
+            className="hidden font-mono text-xs text-muted-foreground transition-colors duration-100 hover:text-foreground sm:block"
           >
-            how this works
+            incidents
           </Link>
         </div>
       </div>
