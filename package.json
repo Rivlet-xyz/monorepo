@@ -2,8 +2,12 @@
   "name": "shoalfi",
   "private": true,
   "packageManager": "bun@1.4.0",
-  "workspaces": [],
+  "workspaces": ["server"],
   "scripts": {
+    "dev:server": "bun run --cwd server dev",
+    "server:start": "bun run --cwd server start",
+    "typecheck": "bun run --cwd server typecheck",
+    "test:server": "bun run --cwd server test",
     "contracts:build": "forge build --root contracts",
     "contracts:test": "forge test --root contracts",
     "contracts:fmt": "forge fmt --root contracts",

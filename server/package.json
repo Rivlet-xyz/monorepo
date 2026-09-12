@@ -1,0 +1,33 @@
+{
+  "name": "@shoalfi/server",
+  "version": "0.0.1",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "bun --env-file=../.env --watch src/index.ts",
+    "start": "bun run src/index.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "bun test ./test",
+    "probe": "bun --env-file=../.env scripts/probe.ts",
+    "probe:collect": "bun --env-file=../.env scripts/probe-collect.ts",
+    "probe:depth": "bun --env-file=../.env scripts/probe-depth.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.125.0",
+    "@fastify/cors": "^11.3.0",
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "@uniswap/sdk-core": "^7.19.2",
+    "@uniswap/v3-sdk": "^3.31.3",
+    "fastify": "^5.12.4",
+    "jsbi": "^3.2.5",
+    "node-cron": "^4.6.0",
+    "p-limit": "^7.3.2",
+    "pg": "^8.23.0",
+    "zod": "^4.6.2"
+  },
+  "devDependencies": {
+    "@types/pg": "^8.23.1",
+    "bun-types": "^1.4.2",
+    "typescript": "^5"
+  }
+}
