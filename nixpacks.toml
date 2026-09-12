@@ -1,0 +1,10 @@
+# Railway / Nixpacks build for the shoalfi API. Bun only; no build step because
+# Bun runs TypeScript directly.
+[phases.setup]
+nixPkgs = ["bun"]
+
+[phases.install]
+cmds = ["bun install --frozen-lockfile"]
+
+[start]
+cmd = "bun run --cwd server start"
