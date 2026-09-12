@@ -6,6 +6,7 @@ import { useCallback, useEffect, useMemo, useState } from "react"
 import { Filters, applyFilters, protocolsOf, type RiskFilter } from "@/components/dashboard/filters"
 import { Footnote } from "@/components/dashboard/footnote"
 import { EmptyState, ErrorBanner, LoadingState } from "@/components/dashboard/states"
+import { TokenDrawer } from "@/components/dashboard/token-drawer"
 import { TokenTable, type SortDir, type SortKey } from "@/components/dashboard/token-table"
 import { getTokens } from "@/lib/api"
 import type { Token } from "@/lib/types"
@@ -14,6 +15,7 @@ export function Dashboard() {
   const router = useRouter()
   const params = useSearchParams()
   const demo = params.get("demo") === "1"
+  const selected = params.get("token")
 
   const [tokens, setTokens] = useState<Token[] | null>(null)
   const [error, setError] = useState<string | null>(null)
@@ -59,6 +61,13 @@ export function Dashboard() {
     [params, router],
   )
 
+  const closeDrawer = useCallback(() => {
+    const next = new URLSearchParams(params.toString())
+    next.delete("token")
+    const query = next.toString()
+    router.push(query ? `?${query}` : "/", { scroll: false })
+  }, [params, router])
+
   const protocols = useMemo(() => (tokens ? protocolsOf(tokens) : []), [tokens])
   const visible = useMemo(
     () => (tokens ? applyFilters(tokens, { query, risk, protocol }) : []),
@@ -102,6 +111,7 @@ export function Dashboard() {
         />
       )}
       <Footnote />
+      {selected ? <TokenDrawer key={selected} address={selected} onClose={closeDrawer} /> : null}
     </div>
   )
 }
