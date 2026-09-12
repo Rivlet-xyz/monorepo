@@ -91,7 +91,21 @@ export function parseEnv(source: Record<string, string | undefined> = process.en
   return result.data
 }
 
-export const env: Env = parseEnv()
+let cached: Env | undefined
+
+/** Parsed once on first access, so importing a module never fails on a blank .env (tests, scripts). */
+export function getEnv(): Env {
+  cached ??= parseEnv()
+  return cached
+}
+
+export const env: Env = new Proxy({} as Env, {
+  get: (_target, key) => getEnv()[key as keyof Env],
+  has: (_target, key) => key in getEnv(),
+  ownKeys: () => Reflect.ownKeys(getEnv()),
+  getOwnPropertyDescriptor: (_target, key) =>
+    Object.getOwnPropertyDescriptor(getEnv(), key),
+})
 
 export type SubgraphRef = { name: string; id: string; role: "uniswap" | "lending" }
 
