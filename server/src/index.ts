@@ -1,13 +1,9 @@
-import Fastify from "fastify"
-import cors from "@fastify/cors"
 import cron from "node-cron"
 import { env } from "./config"
 import { log, errorMessage } from "./log"
 import { closeDb, initSchema } from "./db/client"
 import { runRefresh } from "./jobs/refresh"
-import { healthRoutes } from "./routes/health"
-import { tokenRoutes } from "./routes/tokens"
-import { askRoutes } from "./routes/ask"
+import { buildApp } from "./app"
 
 try {
   await initSchema()
@@ -16,17 +12,7 @@ try {
   process.exit(1)
 }
 
-const app = Fastify({ logger: false })
-await app.register(cors, { origin: true, exposedHeaders: ["x-shoalfi-block", "x-shoalfi-refreshed-at"] })
-await app.register(healthRoutes)
-await app.register(tokenRoutes)
-await app.register(askRoutes)
-
-app.setErrorHandler((err, _request, reply) => {
-  log.error(`unhandled route error: ${errorMessage(err)}`)
-  void reply.code(500).send({ error: "internal error" })
-})
-
+const app = await buildApp()
 await app.listen({ port: env.PORT, host: "0.0.0.0" })
 log.info(`shoalfi api listening on :${env.PORT}`)
 
@@ -41,7 +27,7 @@ async function shutdown(signal: string) {
   try {
     await task.stop()
     await app.close()
-    await closeDb()
+    closeDb()
   } finally {
     process.exit(0)
   }

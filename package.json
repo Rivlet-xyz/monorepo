@@ -11,7 +11,7 @@
     "contracts:build": "forge build --root contracts",
     "contracts:test": "forge test --root contracts",
     "contracts:fmt": "forge fmt --root contracts",
-    "test:e2e": "bun test ./tests"
+    "test:e2e": "bun run --cwd server test:e2e"
   },
   "devDependencies": {
     "@foundry-rs/forge": "^1.7.1"

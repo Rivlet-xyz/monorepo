@@ -8,6 +8,7 @@
     "start": "bun run src/index.ts",
     "typecheck": "tsc --noEmit",
     "test": "bun test ./test",
+    "test:e2e": "bun test ./test/e2e.test.ts",
     "probe": "bun --env-file=../.env scripts/probe.ts",
     "probe:collect": "bun --env-file=../.env scripts/probe-collect.ts",
     "probe:depth": "bun --env-file=../.env scripts/probe-depth.ts"
