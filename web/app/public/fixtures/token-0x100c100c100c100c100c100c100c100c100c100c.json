@@ -1,0 +1,33 @@
+{
+  "address": "0x100c100c100c100c100c100c100c100c100c100c",
+  "symbol": "PT-TESTL-DEC2026",
+  "name": "Test Lima Principal Token, Dec 2026",
+  "priceUsd": 0.9412,
+  "depth": {
+    "state": "unknown",
+    "sellableUsd10pct": null,
+    "venue": null,
+    "poolCount": 0
+  },
+  "safeCapUsd": null,
+  "exposure": {
+    "depositsUsd": 67500000,
+    "maxLtv": 0.86,
+    "exposureUsd": 58050000
+  },
+  "ratio": null,
+  "attackCost": null,
+  "risk": "unknown",
+  "markets": [
+    {
+      "protocol": "morpho-blue",
+      "marketId": "0x900d900d900d900d900d900d900d900d900d900d",
+      "ltv": 0.86,
+      "liquidationThreshold": 0.915,
+      "depositsUsd": 67500000,
+      "borrowsUsd": 36400000
+    }
+  ],
+  "pools": [],
+  "summary": "fixture summary: no uniswap v3 venue was found for PT-TESTL-DEC2026, so depth is unknown rather than shallow and no safe cap can be computed."
+}

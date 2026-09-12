@@ -1,24 +1,20 @@
-import Image from "next/image"
-import { Button } from "@/components/ui/button"
+import { Suspense } from "react"
+
+import { Dashboard } from "@/components/dashboard/dashboard"
+import { Header } from "@/components/dashboard/header"
+import { LoadingState } from "@/components/dashboard/states"
 
 export default function Page() {
   return (
-    <div className="flex min-h-svh p-6">
-      <div className="flex max-w-md min-w-0 flex-col gap-4 text-sm leading-loose">
-        <div>
-          <Image draggable={false}
-            src="/logo.png"
-            alt="shoalfi logo"
-            width={128}
-            height={128}
-            className="mb-4"
-          />
-          <h1 className="font-medium">Project ready!</h1>
-          <p>You may now add components and start building.</p>
-          <p>We&apos;ve already added the button component for you.</p>
-          <Button className="mt-2">Button</Button>
+    <>
+      <Header />
+      <main className="min-h-svh">
+        <div className="container-x">
+          <Suspense fallback={<LoadingState />}>
+            <Dashboard />
+          </Suspense>
         </div>
-      </div>
-    </div>
+      </main>
+    </>
   )
 }
