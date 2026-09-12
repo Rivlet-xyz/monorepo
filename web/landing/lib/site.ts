@@ -6,5 +6,5 @@ export const scannerUrl =
 
 export const redTeamUrl = `${scannerUrl}/red-team`
 
-export const githubUrl = "https://github.com/shoal-xyz/monorepo"
+export const githubUrl = "https://github.com/shoalfi/monorepo"
 export const docsUrl = `${githubUrl}#readme`
