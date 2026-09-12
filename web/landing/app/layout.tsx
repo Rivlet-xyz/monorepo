@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils"
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
 const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-mono" })
 
-const title = "shoal — executable liquidity oracle for lending markets"
+const title = "shoal: executable liquidity oracle for lending markets"
 const description =
   "oracle for how much of a token can actually be sold, plus a plug-in that caps borrowing to it. stops the pump-and-borrow attack."
 
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     type: "website",
     url: "/",
     siteName: "shoal",
-    images: [{ url: "/og.png", width: 1200, height: 630, alt: "shoal — executable liquidity oracle for lending markets" }],
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "shoal: executable liquidity oracle for lending markets" }],
   },
   twitter: {
     card: "summary_large_image",

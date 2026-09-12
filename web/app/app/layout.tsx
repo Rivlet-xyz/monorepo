@@ -11,7 +11,7 @@ const inter = Inter({subsets:['latin'],variable:'--font-sans'})
 
 const geistMono = Geist_Mono({subsets:['latin'],variable:'--font-mono'})
 
-const title = "shoal — executable liquidity oracle for lending markets"
+const title = "shoal: executable liquidity oracle for lending markets"
 const description =
   "oracle for how much of a token can actually be sold, plus a plug-in that caps borrowing to it. stops the pump-and-borrow attack."
 
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
         url: "/og.png",
         width: 1200,
         height: 630,
-        alt: "shoal — executable liquidity oracle for lending markets",
+        alt: "shoal: executable liquidity oracle for lending markets",
       },
     ],
   },
