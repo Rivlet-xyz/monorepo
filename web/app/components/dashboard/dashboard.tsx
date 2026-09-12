@@ -6,6 +6,7 @@ import { useCallback, useEffect, useMemo, useState } from "react"
 import { AskBox } from "@/components/dashboard/ask-box"
 import { Filters, applyFilters, protocolsOf, type RiskFilter } from "@/components/dashboard/filters"
 import { Footnote } from "@/components/dashboard/footnote"
+import { Roadmap } from "@/components/dashboard/roadmap"
 import { EmptyState, ErrorBanner, LoadingState } from "@/components/dashboard/states"
 import { TokenDrawer } from "@/components/dashboard/token-drawer"
 import { TokenTable, type SortDir, type SortKey } from "@/components/dashboard/token-table"
@@ -115,6 +116,7 @@ export function Dashboard() {
         />
       )}
       <Footnote />
+      <Roadmap />
       {selected ? <TokenDrawer key={selected} address={selected} onClose={closeDrawer} /> : null}
     </div>
   )
