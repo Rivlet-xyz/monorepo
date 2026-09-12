@@ -48,7 +48,7 @@ The Graph Network (Subgraph Studio API key)
                           server/src/engine/depth.ts  ▼  tick walk (v3-sdk math)
                           server/src/engine/risk.ts   ▼  exposure, ratio, attack costs
                                                       │
-                                 Postgres (token_scores, refresh_runs)
+                                 SQLite file in server/data/ (token_scores, refresh_runs)
                                                       │
                         Fastify: GET /health  GET /tokens  GET /tokens/:address
                                  POST /ask ──► Claude + The Graph Subgraph MCP
@@ -126,13 +126,15 @@ What was easy, what was surprising, and what we would ask Uniswap for is in
 
 ## Running it
 
-Requirements: [Bun](https://bun.sh) 1.3+, a Postgres 14+ database, a
+Requirements: [Bun](https://bun.sh) 1.3+, a
 [Subgraph Studio API key](https://thegraph.com/studio/apikeys/), and optionally an
-Anthropic API key for `/ask`.
+Anthropic API key for `/ask`. Storage is a SQLite file created automatically at
+`server/data/shoalfi.sqlite` (via Bun's built-in `bun:sqlite`) — no database to
+install or run separately.
 
 ```sh
 bun install
-cp .env.example .env          # fill GRAPH_API_KEY, DATABASE_URL, ANTHROPIC_API_KEY
+cp .env.example .env          # fill GRAPH_API_KEY, ANTHROPIC_API_KEY
 bun run --cwd server probe    # verifies the subgraphs, writes docs/data-sources.md
 bun run dev:server            # API on http://localhost:4000, first refresh starts at boot
 ```
@@ -162,7 +164,10 @@ show exactly how live the data is.
 
 Not deployed yet. `railway.json` and `nixpacks.toml` describe the Railway
 deployment (Bun, `bun run --cwd server start`, `/health` check); the Graph key
-stays server-side. The URL will be added here once it is live.
+stays server-side. Because storage is a local SQLite file, the Railway service
+needs a volume mounted at `server/data` (Railway dashboard → Volumes) so scores
+survive a redeploy; without one every deploy starts with an empty database and
+just rebuilds it on the next refresh. The URL will be added here once it is live.
 
 ## Known simplifications
 

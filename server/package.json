@@ -22,11 +22,9 @@
     "jsbi": "^3.2.5",
     "node-cron": "^4.6.0",
     "p-limit": "^7.3.2",
-    "pg": "^8.23.0",
     "zod": "^4.6.2"
   },
   "devDependencies": {
-    "@types/pg": "^8.23.1",
     "bun-types": "^1.4.2",
     "typescript": "^5"
   }

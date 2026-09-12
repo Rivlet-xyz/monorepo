@@ -9,3 +9,6 @@ coverage/
 !.env.example
 contracts/cache/
 contracts/broadcast/
+server/data/
+*.sqlite
+*.sqlite-*

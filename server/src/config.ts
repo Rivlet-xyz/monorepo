@@ -28,7 +28,9 @@ const EnvSchema = z
       z.url().default("https://subgraphs.mcp.thegraph.com/sse")
     ),
 
-    DATABASE_URL: requiredString(),
+    // Relative paths resolve against the process cwd, i.e. server/ when run via
+    // `bun run --cwd server ...` or the root `dev:server`/`server:start` scripts.
+    DATABASE_PATH: z.preprocess(clean, z.string().min(1).default("./data/shoalfi.sqlite")),
 
     UNISWAP_V3_SUBGRAPH_ID: requiredString(),
     LENDING_SOURCE: z.preprocess(

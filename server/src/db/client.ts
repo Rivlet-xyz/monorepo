@@ -1,42 +1,35 @@
-import pg from "pg"
+import { Database } from "bun:sqlite"
+import { mkdirSync } from "node:fs"
+import { dirname, resolve } from "node:path"
 import { env } from "../config"
 
-export const db = new pg.Pool({
-  connectionString: env.DATABASE_URL,
-  max: 8,
-  connectionTimeoutMillis: 5_000,
-  idleTimeoutMillis: 30_000,
-})
+const dbPath = resolve(env.DATABASE_PATH)
+mkdirSync(dirname(dbPath), { recursive: true })
 
-function describeTarget(): string {
-  try {
-    const u = new URL(env.DATABASE_URL)
-    return `${u.hostname}:${u.port || "5432"}${u.pathname}`
-  } catch {
-    return "(unparseable DATABASE_URL)"
-  }
-}
+export const db = new Database(dbPath, { create: true })
+db.exec("pragma journal_mode = WAL")
+db.exec("pragma foreign_keys = ON")
 
 /** Creates tables and indexes if missing. Safe to run on every boot. */
 export async function initSchema(): Promise<void> {
   const sql = await Bun.file(new URL("./schema.sql", import.meta.url)).text()
   try {
-    await db.query(sql)
+    db.exec(sql)
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err)
-    throw new Error(`cannot initialise Postgres at ${describeTarget()}: ${msg}`)
+    throw new Error(`cannot initialise SQLite database at ${dbPath}: ${msg}`)
   }
 }
 
-export async function pingDb(): Promise<boolean> {
+export function pingDb(): boolean {
   try {
-    await db.query("select 1")
+    db.query("select 1").get()
     return true
   } catch {
     return false
   }
 }
 
-export async function closeDb(): Promise<void> {
-  await db.end()
+export function closeDb(): void {
+  db.close()
 }
