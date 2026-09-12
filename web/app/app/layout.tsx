@@ -1,3 +1,4 @@
+import { GeistPixelSquare } from "geist/font/pixel"
 import type { Metadata } from "next"
 import { Geist_Mono, Inter } from "next/font/google"
 
@@ -51,7 +52,8 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={cn("dark antialiased", "font-mono", inter.variable, interHeading.variable, geistMono.variable)}
+      className={cn("dark antialiased", "font-sans", inter.variable, interHeading.variable, geistMono.variable, GeistPixelSquare.variable)}
+      style={{ ["--font-pixel" as string]: "var(--font-geist-pixel-square)" }}
     >
       <body>
         <ThemeProvider>{children}</ThemeProvider>

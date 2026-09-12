@@ -1,0 +1,21 @@
+{
+  "answer": "**fixture answer.** three collateral tokens currently have more lent against them than could be sold into a 10% move:\n\n- **TESTA** \u2014 $724.5m exposure vs $412m sellable (ratio 1.76)\n- **TESTB** \u2014 $315.7m exposure vs $286m sellable (ratio 1.10)\n- **TESTH** \u2014 $9.8m exposure vs $2.14m sellable (ratio 4.58)\n\n**PT-TESTL-DEC2026** has no uniswap v3 venue at all, so its depth is unknown and it is excluded from the ranking rather than scored.",
+  "toolCalls": [
+    {
+      "tool": "subgraph_query",
+      "target": "uniswap-v3",
+      "ms": 812
+    },
+    {
+      "tool": "subgraph_query",
+      "target": "aave-v3",
+      "ms": 410
+    },
+    {
+      "tool": "subgraph_query",
+      "target": "morpho-blue",
+      "ms": 377
+    }
+  ],
+  "usedMcp": true
+}
