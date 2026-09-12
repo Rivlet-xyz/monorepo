@@ -3,7 +3,7 @@
 import { ThemeProvider as NextThemesProvider } from "next-themes"
 import type * as React from "react"
 
-/** Rivlet ships dark only. The theme is forced so system settings never flip it. */
+/** shoal ships dark only. The theme is forced so system settings never flip it. */
 function ThemeProvider({ children, ...props }: React.ComponentProps<typeof NextThemesProvider>) {
   return (
     <NextThemesProvider

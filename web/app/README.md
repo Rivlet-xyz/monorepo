@@ -1,6 +1,6 @@
-# Rivlet web
+# shoal web
 
-Operator and backer app scaffold using Next.js and coss ui.
+Scanner and red-team app scaffold using Next.js and coss ui.
 Initialized with `bunx --bun shadcn@latest init @coss/style`.
 
 ## Adding components

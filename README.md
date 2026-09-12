@@ -1,20 +1,24 @@
-# Rivlet
+# shoal
 
-<img src="web/landing/public/rivlet-logo.png" alt="Rivlet logo" width="128" height="128" />
+<img src="web/landing/public/logo.png" alt="shoal logo" width="128" height="128" />
 
-Monorepo for the operator and backer app, x402 payment services, and smart contracts.
+Know what your collateral is actually worth if you had to sell it.
+
+Lending markets keep getting drained by tokens that were never sellable at the
+price they were borrowed against. shoal publishes how much of a token can really
+be sold, and caps borrowing to that number.
 
 ```text
-rivlet/
+shoal/
 ├── web/
 │   ├── landing/  # Landing frontend (Next.js + coss ui)
-│   └── app/      # Operator and backer frontend (Next.js + coss ui)
-├── server/       # x402 gateway, funding, verification, payout jobs
+│   └── app/      # Scanner and red-team frontend (Next.js + coss ui)
+├── server/       # Depth indexing, oracle publishing, x402 gateway
 ├── contracts/    # Foundry source, tests, deployment scripts
-├── demo/         # Report agent and paying bots
+├── demo/         # Forked-market replay and red-team scripts
 ├── deployments/  # Deployed addresses and transaction IDs
-├── tests/        # End-to-end funding and payment tests
-├── docs/         # Architecture, payment flow, partner feedback
+├── tests/        # End-to-end tests
+├── docs/         # Architecture and methodology notes
 ├── package.json  # Bun workspaces and root commands
 ├── bun.lock
 └── README.md
@@ -37,7 +41,7 @@ Add further components individually as needed.
 ## Commands
 
 ```sh
-bun dev               # Run the operator/backer app on port 3000
+bun dev               # Run the scanner app on port 3000
 bun dev:landing       # Run the landing frontend on port 3001
 bun run build         # Build both frontends
 bun lint              # Lint both frontends

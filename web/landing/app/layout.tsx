@@ -8,28 +8,26 @@ import { cn } from "@/lib/utils"
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
 const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-mono" })
 
-const title = "Rivlet | Back a bot. Share its earnings."
+const title = "shoal — executable liquidity oracle for lending markets"
 const description =
-  "Help fund an AI bot and earn a share of the money it makes from paying customers."
+  "oracle for how much of a token can actually be sold, plus a plug-in that caps borrowing to it. stops the pump-and-borrow attack."
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.rivlet.xyz"),
+  metadataBase: new URL("https://www.shoalfi.xyz"),
   title,
   description,
   openGraph: {
-    title,
+    title: "shoal",
     description,
     type: "website",
     url: "/",
-    siteName: "Rivlet",
-    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Rivlet — Back a bot. Share its earnings." }],
+    siteName: "shoal",
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "shoal — executable liquidity oracle for lending markets" }],
   },
   twitter: {
     card: "summary_large_image",
-    title,
+    title: "shoal",
     description,
-    site: "@vwakesahu",
-    creator: "@vwakesahu",
     images: ["/og.png"],
   },
 }

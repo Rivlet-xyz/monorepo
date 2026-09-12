@@ -7,11 +7,11 @@ export default function Page() {
       <div className="flex max-w-md min-w-0 flex-col gap-4 text-sm leading-loose">
         <div>
           <Image draggable={false}
-            src="/rivlet-logo.png"
-            alt="Rivlet logo"
+            src="/logo.png"
+            alt="shoal logo"
             width={128}
             height={128}
-            className="mb-4 rounded-xl"
+            className="mb-4"
           />
           <h1 className="font-medium">Project ready!</h1>
           <p>You may now add components and start building.</p>

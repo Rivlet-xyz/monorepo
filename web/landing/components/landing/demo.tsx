@@ -1,5 +1,6 @@
 import { Reveal } from "@/components/landing/reveal"
-import { Band, Headline, Kicker, Placeholder } from "@/components/landing/ui"
+import { Band, Button, Headline, Kicker, Placeholder } from "@/components/landing/ui"
+import { redTeamUrl } from "@/lib/site"
 
 function isEmbed(url: string) {
   return /youtube\.com|youtu\.be|vimeo\.com/.test(url)
@@ -18,11 +19,18 @@ export function Demo({ src }: { src?: string }) {
     <Band id="demo">
       <div className="border-b border-border px-4 py-12 md:px-10 md:py-16">
         <Reveal>
-          <Kicker>Demo</Kicker>
-          <Headline className="mt-3 text-[clamp(1.75rem,3.5vw,2.75rem)]">From earning to funded.</Headline>
+          <Kicker>demo</Kicker>
+          <Headline className="mt-3 text-[clamp(1.75rem,3.5vw,2.75rem)]">same attack. two markets. one survives.</Headline>
           <p className="mt-4 max-w-xl text-lg text-muted-foreground">
-            See a builder raise funding, a backer contribute, and an agent’s payments split between them.
+            two identical compound-fork markets, one pump. the plain one gets drained. the one running shoal reverts
+            with{" "}
+            <code className="bg-muted px-1 py-0.5 font-mono text-[0.9em] text-foreground">BorrowCapExceeded</code>.
           </p>
+          <div className="mt-8">
+            <Button href={redTeamUrl} className="h-11 px-5">
+              try the red-team page
+            </Button>
+          </div>
         </Reveal>
       </div>
       <div className="aspect-video">
@@ -30,13 +38,13 @@ export function Demo({ src }: { src?: string }) {
           isEmbed(src) ? (
             <iframe
               src={toEmbedUrl(src)}
-              title="Rivlet demo"
+              title="shoal demo"
               className="h-full w-full"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             />
           ) : (
-            <video src={src} className="h-full w-full bg-black" controls playsInline preload="metadata" aria-label="Rivlet demo" />
+            <video src={src} className="h-full w-full bg-black" controls playsInline preload="metadata" aria-label="shoal demo" />
           )
         ) : (
           <Placeholder file="public/videos/demo.mp4" note="Product video" className="h-full" />

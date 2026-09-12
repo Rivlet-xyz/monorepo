@@ -1,5 +1,5 @@
 {
-  "name": "rivlet",
+  "name": "shoal",
   "private": true,
   "packageManager": "bun@1.4.0",
   "workspaces": [
