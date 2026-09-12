@@ -83,9 +83,12 @@ export function Header() {
           <Link href="/incident" className="hover:text-foreground">
             aug 2026 incidents
           </Link>
-          <a href="#how-this-works" className="underline decoration-dotted underline-offset-4 hover:text-foreground">
+          <Link
+            href="/#how-this-works"
+            className="underline decoration-dotted underline-offset-4 hover:text-foreground"
+          >
             how this works
-          </a>
+          </Link>
         </div>
       </div>
     </header>
