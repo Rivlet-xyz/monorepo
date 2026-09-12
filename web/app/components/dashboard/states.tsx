@@ -5,7 +5,7 @@ export function EmptyState() {
   return (
     <div className="flex flex-col items-center gap-3 border-x border-t border-border px-4 py-16 text-center">
       <Spinner className="size-5 text-muted-foreground" />
-      <p className="text-sm text-muted-foreground">refresh in progress — first run takes a few minutes</p>
+      <p className="text-sm text-muted-foreground">refresh in progress, first run takes a few minutes</p>
     </div>
   )
 }

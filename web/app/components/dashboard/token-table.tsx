@@ -212,7 +212,7 @@ export function TokenTable({
             {unknown.length > 0 ? (
               <tr className="border-b border-border bg-muted/40">
                 <td colSpan={COLUMNS.length} className="px-4 py-2 font-mono text-xs text-muted-foreground">
-                  no uniswap venue found — depth unknown
+                  no uniswap venue found, depth unknown
                 </td>
               </tr>
             ) : null}

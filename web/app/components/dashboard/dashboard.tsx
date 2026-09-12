@@ -3,6 +3,7 @@
 import { useRouter, useSearchParams } from "next/navigation"
 import { useCallback, useEffect, useMemo, useState } from "react"
 
+import { AskBox } from "@/components/dashboard/ask-box"
 import { Filters, applyFilters, protocolsOf, type RiskFilter } from "@/components/dashboard/filters"
 import { Footnote } from "@/components/dashboard/footnote"
 import { EmptyState, ErrorBanner, LoadingState } from "@/components/dashboard/states"
@@ -52,14 +53,16 @@ export function Dashboard() {
     [sortKey],
   )
 
-  const onSelect = useCallback(
-    (token: Token) => {
+  const openToken = useCallback(
+    (address: string) => {
       const next = new URLSearchParams(params.toString())
-      next.set("token", token.address)
+      next.set("token", address)
       router.push(`?${next.toString()}`, { scroll: false })
     },
     [params, router],
   )
+
+  const onSelect = useCallback((token: Token) => openToken(token.address), [openToken])
 
   const closeDrawer = useCallback(() => {
     const next = new URLSearchParams(params.toString())
@@ -84,6 +87,7 @@ export function Dashboard() {
 
   return (
     <div>
+      <AskBox tokens={tokens ?? []} onToken={openToken} />
       {demo ? null : (
         <Filters
           query={query}
