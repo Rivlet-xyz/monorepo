@@ -1,21 +1,13 @@
 {
-  "name": "rivlet",
+  "name": "shoalfi",
   "private": true,
   "packageManager": "bun@1.4.0",
-  "workspaces": [
-    "web/app",
-    "web/landing"
-  ],
+  "workspaces": [],
   "scripts": {
-    "dev": "bun run --cwd web/app dev",
-    "build": "bun run --cwd web/app build && bun run --cwd web/landing build",
-    "lint": "bun run --cwd web/app lint && bun run --cwd web/landing lint",
-    "typecheck": "bun run --cwd web/app typecheck && bun run --cwd web/landing typecheck",
     "contracts:build": "forge build --root contracts",
     "contracts:test": "forge test --root contracts",
     "contracts:fmt": "forge fmt --root contracts",
-    "test:e2e": "bun test ./tests",
-    "dev:landing": "bun run --cwd web/landing dev"
+    "test:e2e": "bun test ./tests"
   },
   "devDependencies": {
     "@foundry-rs/forge": "^1.7.1"
